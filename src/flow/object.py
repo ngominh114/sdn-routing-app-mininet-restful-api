@@ -1,6 +1,11 @@
 class Flow:
     def __init__(self, priority, timeout, isPermanent, deviceId, treatment, selector):
-        self.priority, self.timeout, self.isPermanent, self.deviceId, self.treatment, self. selector
+        self.priority = priority
+        self.timeout = timeout
+        self.isPermanent = isPermanent
+        self.deviceId = deviceId
+        self.treatment = treatment
+        self.selector = selector
 class Criteria:
     @staticmethod
     def matchInPort(port):
@@ -27,10 +32,21 @@ class OutputInstruction:
     def __init__(self, port, instructionType):
         self.port = port
         self.type = instructionType
+
 class TrafficSelector:
-    def __init__(self, criteria):
-        self.criteria = criteria
+    def __init__(self):
+        self.criteria = []
+    def matchInPort(self, port):
+        self.criteria.append(Criteria.matchInPort(port))
+    
+    def matchEthSrc(self, mac):
+        self.criteria.append(Criteria.matchEthSrc(mac))
+    
+    def matchEthDst(self, mac):
+        self.criteria.append(Criteria.matchEthDst(mac))
 
 class TrafficTreatment:
-    def __init__(self, instructions):
-        self.instructions = instructions
+    def __init__(self):
+        self.instructions = []
+    def setOutput(self, port):
+        self.instructions.append(Instructions.output(port))

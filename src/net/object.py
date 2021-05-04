@@ -1,6 +1,7 @@
 class ConnectPoint:
     def __init__(self, deviceId: str, port: str):
-        self.deviceId = deviceId, self.port = port
+        self.deviceId = deviceId
+        self.port = port
 
 class Link:
     def __init__(self, src: ConnectPoint, dst: ConnectPoint, delay: float):
@@ -15,4 +16,5 @@ class Device:
 
 class Host:
     def __init__(self, mac: str, connectPoint: ConnectPoint):
-        self.mac = mac, self.connectPoint = connectPoint
+        self.mac = mac
+        self.connectPoint = connectPoint

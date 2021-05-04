@@ -1,0 +1,52 @@
+{
+    "hosts": [
+        {
+            "mac": "HIHI",
+            "connectPoint": {
+                "deviceId": "1",
+                "port": "1"
+            }
+        },
+        {
+            "mac": "Haha",
+            "connectPoint": {
+                "deviceId": "2",
+                "port": "2"
+            }
+        }
+    ],
+    "links": [
+        {
+            "src": {
+                "deviceId": "1",
+                "port": "1"
+            },
+            "dst": {
+                "deviceId": "2",
+                "port": "2"
+            },
+            "delay": 0.1
+        },
+        {
+            "src": {
+                "deviceId": "2",
+                "port": "2"
+            },
+            "dst": {
+                "deviceId": "1",
+                "port": "1"
+            },
+            "delay": 0.2
+        }
+    ],
+    "devices": [
+        {
+            "id": "1",
+            "controller_address": "192.168.1.1"
+        },
+        {
+            "id": "2",
+            "controller_address": "192.168.1.1"
+        }
+    ]
+}
