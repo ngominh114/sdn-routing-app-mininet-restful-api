@@ -1,17 +1,17 @@
 {
     "hosts": [
         {
-            "mac": "HIHI",
-            "connectPoint": {
-                "deviceId": "1",
-                "port": "1"
-            }
-        },
-        {
             "mac": "Haha",
             "connectPoint": {
                 "deviceId": "2",
                 "port": "2"
+            }
+        },
+        {
+            "mac": "HIHI",
+            "connectPoint": {
+                "deviceId": "1",
+                "port": "1"
             }
         }
     ],

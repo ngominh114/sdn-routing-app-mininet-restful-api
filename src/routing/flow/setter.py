@@ -12,7 +12,7 @@ def makeFlow(deviceId, inPort, outPort, dst):
 
 def setFlow(net, data, flows):
     for flow in flows:
-        
+        sw = net.getNodeByName()
     return
 
 def installFlow(path, data, src, dst):
