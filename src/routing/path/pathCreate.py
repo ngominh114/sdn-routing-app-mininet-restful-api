@@ -1,6 +1,7 @@
+from graph import Graph
 class PathCreator:
-    def __init__(self, graph):
-        self.graph = graph
+    def __init__(self):
+        self.graph = Graph()
         self.shortestPaths = {}
     def traceShortestLinks(self, currentVertex, parents):
         if (currentVertex == 'NULL'):
@@ -62,11 +63,9 @@ class PathCreator:
         
     def createPath(self, src, dst):
         self.updatePath()
-        try:
-            path = self.shortestPaths[src][dst]
-            return path
-        except:
-            return []
+        print(self.shortestPaths)
+        path = self.shortestPaths[src][dst]
+        return path
 
     
     

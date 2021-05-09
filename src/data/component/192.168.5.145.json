@@ -1,67 +1,79 @@
 {
+    "hosts": [
+        {
+            "mac": "92:34:3E:A9:55:B2", 
+            "connectPoint": {
+                "deviceId": "of:0000000000000003", 
+                "port": "2"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "DA:77:D9:5E:E2:81", 
+            "connectPoint": {
+                "deviceId": "of:0000000000000001", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }
+    ], 
     "devices": [
         {
             "controller_ip": "192.168.5.145", 
-            "deviceId": {
-                "id": "of:00004efa93e7d344"
-            }
+            "id": "of:0000000000000003"
+        }, 
+        {
+            "controller_ip": "192.168.5.145", 
+            "id": "of:0000000000000001"
+        }, 
+        {
+            "controller_ip": "192.168.5.145", 
+            "id": "of:0000000000000002"
         }
     ], 
     "links": [
         {
+            "delay": 1.0, 
             "src": {
-                "deviceId": {
-                    "id": "of:0000000000000004"
-                }, 
-                "port": "1"
+                "deviceId": "of:0000000000000001", 
+                "port": "4"
             }, 
             "dst": {
-                "deviceId": {
-                    "id": "of:00004efa93e7d344"
-                }, 
-                "port": "4"
+                "deviceId": "of:0000000000000002", 
+                "port": "1"
             }
         }, 
         {
+            "delay": 1.0, 
             "src": {
-                "deviceId": {
-                    "id": "of:0000000000000005"
-                }, 
+                "deviceId": "of:0000000000000001", 
+                "port": "5"
+            }, 
+            "dst": {
+                "deviceId": "of:0000000000000003", 
+                "port": "1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "deviceId": "of:0000000000000003", 
                 "port": "1"
             }, 
             "dst": {
-                "deviceId": {
-                    "id": "of:00004efa93e7d344"
-                }, 
+                "deviceId": "of:0000000000000001", 
                 "port": "5"
             }
         }, 
         {
+            "delay": 1.0, 
             "src": {
-                "deviceId": {
-                    "id": "of:00004efa93e7d344"
-                }, 
+                "deviceId": "of:0000000000000002", 
+                "port": "1"
+            }, 
+            "dst": {
+                "deviceId": "of:0000000000000001", 
                 "port": "4"
-            }, 
-            "dst": {
-                "deviceId": {
-                    "id": "of:0000000000000004"
-                }, 
-                "port": "1"
-            }
-        }, 
-        {
-            "src": {
-                "deviceId": {
-                    "id": "of:00004efa93e7d344"
-                }, 
-                "port": "5"
-            }, 
-            "dst": {
-                "deviceId": {
-                    "id": "of:0000000000000005"
-                }, 
-                "port": "1"
             }
         }
     ]

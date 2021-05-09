@@ -11,7 +11,6 @@ class DataAPI:
         self.data["hosts"] = []
     def updateData(self):
         list_file = os.listdir(self.component_data_dir)
-        print(list_file)
         hosts = []
         devices = []
         links = []
@@ -19,11 +18,11 @@ class DataAPI:
             with open(self.component_data_dir + "/" + file_name, 'r') as data_file:
                 objs = json.loads(data_file.read())
                 if ("hosts" in objs):
-                    hosts.append(objs["hosts"])
+                    hosts = hosts + objs["hosts"]
                 if ("devices" in objs):
-                    devices.append(objs["devices"])
+                    devices = devices + objs["devices"]
                 if ("links" in objs):
-                    links.append(objs["links"])
+                    links = links + objs["links"]
                 data_file.close()
         self.data["hosts"] = hosts
         self.data["devices"] = devices
@@ -47,7 +46,6 @@ class DataAPI:
             objs = json.loads(data_file.read())
             hosts = data["hosts"]
             objs["hosts"] = hosts
-            print(objs)
             data_file.close()
         with open(file_dir,'w') as data_file:
             jsonString = json.dumps(objs, default=lambda o: o.__dict__, indent=4)
@@ -62,7 +60,6 @@ class DataAPI:
             objs = json.loads(data_file.read())
             devices = data["devices"]
             objs["devices"] = devices
-            print(objs)
             data_file.close()
         with open(file_dir,'w') as data_file:
             jsonString = json.dumps(objs, default=lambda o: o.__dict__, indent=4)
@@ -77,7 +74,6 @@ class DataAPI:
             objs = json.loads(data_file.read())
             links = data["links"]
             objs["links"] = links
-            print(objs)
             data_file.close()
         with open(file_dir,'w') as data_file:
             jsonString = json.dumps(objs, default=lambda o: o.__dict__, indent=4)
@@ -106,11 +102,10 @@ class DataAPI:
                 links.pop(i)
                 self.save()
                 break
-def read():
-    with open("data/data.json", 'r') as data_file:
-        objs = json.loads(data_file.read())
-        data_file.close()
-        return objs
+    def getConnectPoint(self, mac):
+        for host in self.data["hosts"]:
+            if host["mac"] == mac:
+                return host["connectPoint"]
 
 
 

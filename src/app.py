@@ -14,6 +14,8 @@ import configparser
 from data.dataAPI import DataAPI
 from flask import Flask
 from flask import request
+
+from routing.path.pathCreate import PathCreator
 import json
 
 
@@ -31,13 +33,15 @@ graph = networkx.read_graphml(filename)
 net = Mininet(topo=None, build=False)
 nodes = graph.nodes()
 edges = graph.edges()
+dpid = "00000000000000"
 hosts = [n for n in nodes if 1 == graph.in_degree()[n]+graph.out_degree()[n]]
-
+number_of_switch = 0
 for node in nodes:
     if node in hosts:
         net.addHost(node)
     else:
-        net.addSwitch(node, protocols='OpenFlow13')
+        number_of_switch = number_of_switch + 1
+        net.addSwitch(node, protocols='OpenFlow13', dpid = dpid + "%02d"%number_of_switch)
 
 if len(hosts) == 0:
     for node in nodes:
@@ -47,15 +51,19 @@ for edge in edges:
     linkopts = dict()
     net.addLink(edge[0], edge[1], **linkopts)
 
-def getSwitch(id):
-    for sw in net.switches:
-        print(sw.dpid)
-        print(id)
+pathCreate = PathCreator()
 
+def findPathAndSetFlow(src, dst):
+    srcConnectPoint = api.getConnectPoint(src)
+    dstConnectPoint = api.getConnectPoint(dst)
+    path = pathCreate.createPath(srcConnectPoint["deviceId"], dstConnectPoint["deviceId"])
+    print(path)
 app = Flask(__name__)
 @app.route('/pingAll', methods = ['GET'])
 def pingAll():
-    net.pingAll()
+    n8 = net.getNodeByName('n8')
+    n9 = net.getNodeByName('n9')
+    net.ping([n8, n9])
     return ""
 @app.route('/cancel', methods=['GET'])
 def cancel():
@@ -69,10 +77,15 @@ def start():
     net.build()
     for i, sw in enumerate(net.switches):
         c = random.choice(controllers)
-        print(i)
         sw.start([c])
     return ""
-
+@app.route('/setFlow', methods = ["POST"])
+def setFlow():
+    data = request.get_json()
+    src = data["src"]
+    dst = data["dst"]
+    findPathAndSetFlow(src, dst)
+    return ""
 @app.route('/shutdown', methods = ['GET'])
 def bye():
     net.stop()
@@ -83,6 +96,7 @@ def bye():
 def updateDevices():
     data = request.get_json()
     api.updateDevice(data)
+    pathCreate.graph.updateGraph(api.data)
     return ""
 
 
@@ -96,4 +110,5 @@ def updateHosts():
 def updateLinks():
     data = request.get_json()
     api.updateLink(data)
+    pathCreate.graph.updateGraph(api.data)
     return ""
