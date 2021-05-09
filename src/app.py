@@ -1,6 +1,7 @@
 import networkx
 import random
 import sys
+import os
 import math
 from mininet.net import Mininet
 from mininet.topo import Topo
@@ -56,7 +57,9 @@ app = Flask(__name__)
 def pingAll():
     net.pingAll()
     return ""
-
+@app.route('/cancel', methods=['GET'])
+def cancel():
+    os.system("")
 @app.route('/', methods=['GET'])
 def start():
     controllers = []
@@ -73,20 +76,24 @@ def start():
 @app.route('/shutdown', methods = ['GET'])
 def bye():
     net.stop()
+    os.system("sudo mn -c")
     return ""
 
 @app.route('/devices.store', methods = ['POST'])
-def addDevices():
-    # print(request.args)
-    # print(data)
-    # api.updateDevice(devices)
-    return ""
-
-
-@app.route('/flows.store', methods = ['POST'])
-def addFlows():
+def updateDevices():
     data = request.get_json()
-    getSwitch(1)
-    print(data['1'])
+    api.updateDevice(data)
     return ""
 
+
+@app.route('/hosts.store', methods = ['POST'])
+def updateHosts():
+    data = request.get_json()
+    api.updateHost(data)
+    return ""
+
+@app.route('/links.store', methods = ['POST'])
+def updateLinks():
+    data = request.get_json()
+    api.updateLink(data)
+    return ""
