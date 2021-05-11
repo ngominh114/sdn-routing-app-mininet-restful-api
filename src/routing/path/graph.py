@@ -5,11 +5,10 @@ class Node:
         self.cost = cost
 class Graph: 
     def updateGraph(self, data):
+        self.adj = {}
+        self.deviceIds = []
         if ("devices" in data):
             self.numberOfDevices = len(data['devices'])
-            self.adj = {}
-            self.deviceIds = []
-
             for device in data['devices']:
                 self.adj[device['id']] = {}
                 self.deviceIds.append(device['id'])

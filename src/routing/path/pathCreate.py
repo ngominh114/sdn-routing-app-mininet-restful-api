@@ -62,8 +62,9 @@ class PathCreator:
             self.dijkstra(deviceId)
         
     def createPath(self, src, dst):
+        if(src == dst):
+            return []
         self.updatePath()
-        print(self.shortestPaths)
         path = self.shortestPaths[src][dst]
         return path
 

@@ -1,34 +1,20 @@
 {
     "hosts": [
         {
-            "mac": "92:34:3E:A9:55:B2", 
+            "mac": "4A:D5:16:0F:D2:B9", 
             "connectPoint": {
-                "deviceId": "of:0000000000000003", 
+                "deviceId": "of:0000000000000001", 
+                "port": "3"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "36:2C:32:AB:34:68", 
+            "connectPoint": {
+                "deviceId": "of:0000000000000001", 
                 "port": "2"
             }, 
             "suspended": false
-        }, 
-        {
-            "mac": "DA:77:D9:5E:E2:81", 
-            "connectPoint": {
-                "deviceId": "of:0000000000000001", 
-                "port": "1"
-            }, 
-            "suspended": false
-        }
-    ], 
-    "devices": [
-        {
-            "controller_ip": "192.168.5.145", 
-            "id": "of:0000000000000003"
-        }, 
-        {
-            "controller_ip": "192.168.5.145", 
-            "id": "of:0000000000000001"
-        }, 
-        {
-            "controller_ip": "192.168.5.145", 
-            "id": "of:0000000000000002"
         }
     ], 
     "links": [
@@ -76,5 +62,6 @@
                 "port": "4"
             }
         }
-    ]
+    ], 
+    "devices": []
 }

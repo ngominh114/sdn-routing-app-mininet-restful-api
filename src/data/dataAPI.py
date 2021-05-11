@@ -102,10 +102,10 @@ class DataAPI:
                 links.pop(i)
                 self.save()
                 break
-    def getConnectPoint(self, mac):
+    def getHostByMac(self, mac):
         for host in self.data["hosts"]:
             if host["mac"] == mac:
-                return host["connectPoint"]
+                return host
 
 
 
