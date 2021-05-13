@@ -46,7 +46,6 @@ net.build()
 
 for i, sw in enumerate(net.switches):
     c = random.choice(controllers)
-    print(i)
     sw.start([c])
 CLI(net)
 net.stop()

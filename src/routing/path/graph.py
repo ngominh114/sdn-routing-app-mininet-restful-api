@@ -1,24 +1,20 @@
 # from mininet.net import Mininet
-class Node:
-    def __init__(self, dst, cost):
-        self.dst = dst
-        self.cost = cost
 class Graph: 
     def updateGraph(self, data):
         self.adj = {}
-        self.deviceIds = []
-        if ("devices" in data):
-            self.numberOfDevices = len(data['devices'])
-            for device in data['devices']:
-                self.adj[device['id']] = {}
-                self.deviceIds.append(device['id'])
+        self.switches = []
+        if ("switches" in data):
+            self.numberOfSwitches = len(data['switches'])
+            for switch in data['switches']:
+                self.adj[switch['name']] = {}
+                self.switches.append(switch['name'])
             if ("links" in data):
                 for link in data['links']:
-                    srcId = link['src']['deviceId']
-                    dstId = link['dst']['deviceId']
-                    if (not srcId in self.adj):
-                        self.adj[srcId] = {}
-                    self.adj[srcId][dstId] = link
+                    srcSw = link['src']['sw']
+                    dstSw = link['dst']['sw']
+                    if (not srcSw in self.adj):
+                        self.adj[srcSw] = {}
+                    self.adj[srcSw][dstSw] = link
 
     def getAdj(self):
         return self.adj

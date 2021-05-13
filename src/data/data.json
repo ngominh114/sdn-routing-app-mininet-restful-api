@@ -1,67 +1,116 @@
 {
-    "hosts": [
+    "switches": [
         {
-            "mac": "4A:D5:16:0F:D2:B9", 
-            "connectPoint": {
-                "deviceId": "of:0000000000000001", 
-                "port": "3"
-            }, 
-            "suspended": false
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000001", 
+            "name": "s1"
         }, 
         {
-            "mac": "36:2C:32:AB:34:68", 
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000002", 
+            "name": "s2"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000003", 
+            "name": "s3"
+        }
+    ], 
+    "hosts": [
+        {
+            "mac": "1e:47:e8:03:e3:aa", 
             "connectPoint": {
-                "deviceId": "of:0000000000000001", 
-                "port": "2"
-            }, 
-            "suspended": false
+                "sw": "s3", 
+                "port": "s3-eth2"
+            }
+        }, 
+        {
+            "mac": "f2:a3:3a:81:5b:bb", 
+            "connectPoint": {
+                "sw": "s1", 
+                "port": "s1-eth1"
+            }
+        }, 
+        {
+            "mac": "7a:85:43:2f:71:4d", 
+            "connectPoint": {
+                "sw": "s1", 
+                "port": "s1-eth2"
+            }
+        }, 
+        {
+            "mac": "4a:4d:28:8f:50:f2", 
+            "connectPoint": {
+                "sw": "s1", 
+                "port": "s1-eth3"
+            }
+        }, 
+        {
+            "mac": "72:d6:16:b5:10:ee", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth2"
+            }
+        }, 
+        {
+            "mac": "26:35:a3:c5:23:ee", 
+            "connectPoint": {
+                "sw": "s1", 
+                "port": "s1-eth6"
+            }
+        }, 
+        {
+            "mac": "0e:b5:92:eb:f2:cc", 
+            "connectPoint": {
+                "sw": "s1", 
+                "port": "s1-eth7"
+            }
         }
     ], 
     "links": [
         {
             "delay": 1.0, 
             "src": {
-                "deviceId": "of:0000000000000001", 
-                "port": "4"
+                "sw": "s1", 
+                "port": "s1-eth4"
             }, 
             "dst": {
-                "deviceId": "of:0000000000000002", 
-                "port": "1"
+                "sw": "s2", 
+                "port": "s2-eth1"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
-                "deviceId": "of:0000000000000001", 
-                "port": "5"
+                "sw": "s2", 
+                "port": "s2-eth1"
             }, 
             "dst": {
-                "deviceId": "of:0000000000000003", 
-                "port": "1"
+                "sw": "s1", 
+                "port": "s1-eth4"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
-                "deviceId": "of:0000000000000003", 
-                "port": "1"
+                "sw": "s1", 
+                "port": "s1-eth5"
             }, 
             "dst": {
-                "deviceId": "of:0000000000000001", 
-                "port": "5"
+                "sw": "s3", 
+                "port": "s3-eth1"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
-                "deviceId": "of:0000000000000002", 
-                "port": "1"
+                "sw": "s3", 
+                "port": "s3-eth1"
             }, 
             "dst": {
-                "deviceId": "of:0000000000000001", 
-                "port": "4"
+                "sw": "s1", 
+                "port": "s1-eth5"
             }
         }
-    ], 
-    "devices": []
+    ]
 }

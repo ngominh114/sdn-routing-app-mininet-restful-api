@@ -1,6 +1,6 @@
 class Flow:
-    def __init__(self, deviceId, in_port, out_port, dl_dst, timeout):
-        self.deviceId = deviceId
+    def __init__(self, switch, in_port, out_port, dl_dst, timeout):
+        self.switch = switch
         self.timeout = timeout
         self.in_port = in_port
         self.dl_dst = dl_dst

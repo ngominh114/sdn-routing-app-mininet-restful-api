@@ -9,6 +9,7 @@ from data.dataAPI import DataAPI
 from flask import Flask
 from flask import request
 from routing.flow import setter
+from mininet.cli import CLI
 from routing.path.pathCreate import PathCreator
 import json
 
@@ -31,13 +32,18 @@ edges = graph.edges()
 dpid_prefix = "00000000000000"
 hosts = [n for n in nodes if 1 == graph.in_degree()[n]+graph.out_degree()[n]]
 number_of_switch = 0
+number_of_host = 0
+nodeMapNet = {}
 for node in nodes:
     if node in hosts:
-        net.addHost(node)
+        number_of_host += 1
+        h = net.addHost("h%d"%number_of_host)
+        nodeMapNet[node] = h
     else:
         number_of_switch = number_of_switch + 1
         dpid = dpid_prefix + "%02d"%number_of_switch
-        sw = net.addSwitch(node, dpid = dpid)
+        sw = net.addSwitch("s%d"%number_of_switch, dpid = dpid)
+        nodeMapNet[node] = sw
         sw_dict[dpid] = sw
 if len(hosts) == 0:
     for node in nodes:
@@ -45,25 +51,24 @@ if len(hosts) == 0:
         net.addLink("h%s" % node, node)
 for edge in edges:
     linkopts = dict()
-    net.addLink(edge[0], edge[1], **linkopts)
+    net.addLink(nodeMapNet[edge[0]], nodeMapNet[edge[1]], **linkopts)
 
 pathCreate = PathCreator()
-
+links ={}
 def findPathAndSetFlow(src, dst):
-    srcHost = api.getHostByMac(src)
-    dstHost = api.getHostByMac(dst)
-    path = pathCreate.createPath(srcHost["connectPoint"]["deviceId"], dstHost["connectPoint"]["deviceId"])
+    srcHost = api.getHostByMac(str.lower(str(src)))
+    dstHost = api.getHostByMac(str.lower(str(dst)))
+    if (srcHost == None or dstHost == None):
+        return
+    path = pathCreate.createPath(srcHost["connectPoint"]["sw"], dstHost["connectPoint"]["sw"])
+    print(path)
     setter.installFlow(sw_dict, path, srcHost, dstHost)
 app = Flask(__name__)
 @app.route('/pingAll', methods = ['GET'])
 def pingAll():
-    n1 = net.getNodeByName('n1')
-    n2 = net.getNodeByName('n2')
-    net.ping([n1, n2])
+    net.pingAll()
     return ""
-@app.route('/cancel', methods=['GET'])
-def cancel():
-    os.system("")
+
 @app.route('/', methods=['GET'])
 def start():
     controllers = []
@@ -81,41 +86,32 @@ def setFlow():
     data = request.get_json()
     src = data["src"]
     dst = data["dst"]
+    # print(src)
+    # print(dst)
     findPathAndSetFlow(src, dst)
     return ""
-@app.route('/shutdown', methods = ['GET'])
-def bye():
-    net.stop()
-    os.system("sudo mn -c")
-    return ""
 
-@app.route('/devices.store', methods = ['POST'])
-def updateDevices():
-    data = request.get_json()
-    api.updateDevice(data)
+@app.route('/data.store', methods = ['GET'])
+def updateData():
+    api.updateDataByNet(net)
     pathCreate.graph.updateGraph(api.data)
     return ""
 
+@app.route('/findPath', methods=["GET"])
+def findPath():
+    src = "72:D6:16:B5:10:EE"
+    dst = "1E:47:E8:03:E3:AA"
+    findPathAndSetFlow(src, dst)
+    return ""
+# @app.route('/hosts.store', methods = ['GET'])
+# def updateHosts():
+#     # data = request.get_json()
+#     api.buildHostDataByNet(net)
+#     return ""
 
-@app.route('/hosts.store', methods = ['POST'])
-def updateHosts():
-    data = request.get_json()
-    api.updateHost(data)
-    return ""
-@app.route("/add-flow", methods=["GET"])
-def add_flow():
-    os.system("sudo ovs-ofctl add-flow n0 in_port=3,actions=output:2")
-    os.system("sudo ovs-ofctl add-flow n0 in_port=2,actions=output:3")
-    return ""
-
-@app.route("/testPing", methods=["GET"])
-def test_ping():
-    
-    return ""
-
-@app.route('/links.store', methods = ['POST'])
-def updateLinks():
-    data = request.get_json()
-    api.updateLink(data)
-    pathCreate.graph.updateGraph(api.data)
-    return ""
+# @app.route('/links.store', methods = ['POST'])
+# def updateLinks():
+#     data = request.get_json()
+#     api.updateLink(data)
+#     pathCreate.graph.updateGraph(api.data)
+#     return ""
