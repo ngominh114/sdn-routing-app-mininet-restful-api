@@ -18,49 +18,49 @@
     ], 
     "hosts": [
         {
-            "mac": "1e:47:e8:03:e3:aa", 
+            "mac": "b2:22:52:0d:60:74", 
             "connectPoint": {
                 "sw": "s3", 
                 "port": "s3-eth2"
             }
         }, 
         {
-            "mac": "f2:a3:3a:81:5b:bb", 
+            "mac": "aa:4a:22:5f:34:03", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth1"
             }
         }, 
         {
-            "mac": "7a:85:43:2f:71:4d", 
+            "mac": "1a:a8:1f:12:1d:97", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth2"
             }
         }, 
         {
-            "mac": "4a:4d:28:8f:50:f2", 
+            "mac": "8e:29:cf:ca:5f:3f", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth3"
             }
         }, 
         {
-            "mac": "72:d6:16:b5:10:ee", 
+            "mac": "86:2d:dd:cc:6a:06", 
             "connectPoint": {
                 "sw": "s2", 
                 "port": "s2-eth2"
             }
         }, 
         {
-            "mac": "26:35:a3:c5:23:ee", 
+            "mac": "2e:49:63:ed:d5:bf", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth6"
             }
         }, 
         {
-            "mac": "0e:b5:92:eb:f2:cc", 
+            "mac": "1e:74:a4:b4:6e:50", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth7"

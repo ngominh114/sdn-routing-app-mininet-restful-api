@@ -25,7 +25,6 @@ for i in range(number_of_controllers):
     c_ip.append(config["CONTROLLER_IP"]["ip_%s"%i])
 filename = config["DIRECTORIES"]["topo"]
 graph = networkx.read_graphml(filename)
-sw_dict = {}
 net = Mininet(topo=None, build=False)
 nodes = graph.nodes()
 edges = graph.edges()
@@ -44,7 +43,6 @@ for node in nodes:
         dpid = dpid_prefix + "%02d"%number_of_switch
         sw = net.addSwitch("s%d"%number_of_switch, dpid = dpid)
         nodeMapNet[node] = sw
-        sw_dict[dpid] = sw
 if len(hosts) == 0:
     for node in nodes:
         net.addHost("h%s" % node)
@@ -62,7 +60,7 @@ def findPathAndSetFlow(src, dst):
         return
     path = pathCreate.createPath(srcHost["connectPoint"]["sw"], dstHost["connectPoint"]["sw"])
     print(path)
-    setter.installFlow(sw_dict, path, srcHost, dstHost)
+    setter.installFlow(path, srcHost, dstHost)
 app = Flask(__name__)
 @app.route('/pingAll', methods = ['GET'])
 def pingAll():
@@ -86,8 +84,6 @@ def setFlow():
     data = request.get_json()
     src = data["src"]
     dst = data["dst"]
-    # print(src)
-    # print(dst)
     findPathAndSetFlow(src, dst)
     return ""
 
@@ -99,9 +95,9 @@ def updateData():
 
 @app.route('/findPath', methods=["GET"])
 def findPath():
-    src = "72:D6:16:B5:10:EE"
-    dst = "1E:47:E8:03:E3:AA"
-    findPathAndSetFlow(src, dst)
+    h1 = net.getNodeByName("h1")
+    h5 = net.getNodeByName("h5")
+    h1.cmd("ping -c1 " + str(h5.IP()))
     return ""
 # @app.route('/hosts.store', methods = ['GET'])
 # def updateHosts():

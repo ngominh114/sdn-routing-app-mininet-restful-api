@@ -1,10 +1,10 @@
 class Flow:
-    def __init__(self, switch, in_port, out_port, dl_dst, timeout):
+    def __init__(self, switch, in_port, out_port, dl_src, dl_dst):
         self.switch = switch
-        self.timeout = timeout
         self.in_port = in_port
-        self.dl_dst = dl_dst
         self.out_port = out_port
+        self.dl_src= dl_src
+        self.dl_dst = dl_dst
 class Criteria:
     @staticmethod
     def matchInPort(port):
