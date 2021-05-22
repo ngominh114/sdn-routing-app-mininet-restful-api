@@ -14,56 +14,194 @@
             "controller_address": "192.168.1.1", 
             "id": "0000000000000003", 
             "name": "s3"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000004", 
+            "name": "s4"
         }
     ], 
     "hosts": [
         {
-            "mac": "b2:22:52:0d:60:74", 
+            "mac": "2a:47:39:61:32:07", 
+            "connectPoint": {
+                "sw": "s3", 
+                "port": "s3-eth1"
+            }
+        }, 
+        {
+            "mac": "b6:8e:99:67:1c:9d", 
             "connectPoint": {
                 "sw": "s3", 
                 "port": "s3-eth2"
             }
         }, 
         {
-            "mac": "aa:4a:22:5f:34:03", 
+            "mac": "a6:f1:17:e0:20:15", 
             "connectPoint": {
-                "sw": "s1", 
-                "port": "s1-eth1"
+                "sw": "s3", 
+                "port": "s3-eth3"
             }
         }, 
         {
-            "mac": "1a:a8:1f:12:1d:97", 
+            "mac": "3a:31:b3:95:8e:55", 
+            "connectPoint": {
+                "sw": "s3", 
+                "port": "s3-eth4"
+            }
+        }, 
+        {
+            "mac": "9a:1f:1e:eb:28:1e", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth2"
             }
         }, 
         {
-            "mac": "8e:29:cf:ca:5f:3f", 
+            "mac": "da:22:bc:66:b4:e8", 
             "connectPoint": {
-                "sw": "s1", 
-                "port": "s1-eth3"
+                "sw": "s2", 
+                "port": "s2-eth1"
             }
         }, 
         {
-            "mac": "86:2d:dd:cc:6a:06", 
+            "mac": "1e:86:59:cb:f7:9a", 
+            "connectPoint": {
+                "sw": "s1", 
+                "port": "s1-eth1"
+            }
+        }, 
+        {
+            "mac": "7a:1f:7e:7e:8e:a9", 
             "connectPoint": {
                 "sw": "s2", 
                 "port": "s2-eth2"
             }
         }, 
         {
-            "mac": "2e:49:63:ed:d5:bf", 
+            "mac": "de:9d:31:13:2c:c9", 
             "connectPoint": {
-                "sw": "s1", 
-                "port": "s1-eth6"
+                "sw": "s2", 
+                "port": "s2-eth3"
             }
         }, 
         {
-            "mac": "1e:74:a4:b4:6e:50", 
+            "mac": "b2:e8:52:2e:91:88", 
             "connectPoint": {
-                "sw": "s1", 
-                "port": "s1-eth7"
+                "sw": "s3", 
+                "port": "s3-eth8"
+            }
+        }, 
+        {
+            "mac": "ce:2f:12:07:b1:5d", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth4"
+            }
+        }, 
+        {
+            "mac": "3a:6a:44:0f:83:64", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth5"
+            }
+        }, 
+        {
+            "mac": "5a:a4:87:d8:eb:07", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth6"
+            }
+        }, 
+        {
+            "mac": "42:1f:44:38:fa:c5", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth7"
+            }
+        }, 
+        {
+            "mac": "a2:31:a9:f5:f9:08", 
+            "connectPoint": {
+                "sw": "s3", 
+                "port": "s3-eth11"
+            }
+        }, 
+        {
+            "mac": "b2:25:af:81:ce:cc", 
+            "connectPoint": {
+                "sw": "s3", 
+                "port": "s3-eth12"
+            }
+        }, 
+        {
+            "mac": "72:a1:bf:da:a3:4a", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth8"
+            }
+        }, 
+        {
+            "mac": "3a:42:d3:86:ae:52", 
+            "connectPoint": {
+                "sw": "s2", 
+                "port": "s2-eth9"
+            }
+        }, 
+        {
+            "mac": "02:93:8b:14:b9:6e", 
+            "connectPoint": {
+                "sw": "s4", 
+                "port": "s4-eth2"
+            }
+        }, 
+        {
+            "mac": "0e:dc:47:71:0e:84", 
+            "connectPoint": {
+                "sw": "s3", 
+                "port": "s3-eth7"
+            }
+        }, 
+        {
+            "mac": "32:13:c7:fc:5d:f9", 
+            "connectPoint": {
+                "sw": "s3", 
+                "port": "s3-eth9"
+            }
+        }, 
+        {
+            "mac": "a2:ea:cc:eb:36:cc", 
+            "connectPoint": {
+                "sw": "s4", 
+                "port": "s4-eth3"
+            }
+        }, 
+        {
+            "mac": "ee:fb:33:cd:c0:f1", 
+            "connectPoint": {
+                "sw": "s4", 
+                "port": "s4-eth4"
+            }
+        }, 
+        {
+            "mac": "56:c4:e4:0d:57:5c", 
+            "connectPoint": {
+                "sw": "s4", 
+                "port": "s4-eth5"
+            }
+        }, 
+        {
+            "mac": "4a:5e:44:26:6a:f6", 
+            "connectPoint": {
+                "sw": "s4", 
+                "port": "s4-eth6"
+            }
+        }, 
+        {
+            "mac": "76:3c:80:c2:0b:3a", 
+            "connectPoint": {
+                "sw": "s4", 
+                "port": "s4-eth7"
             }
         }
     ], 
@@ -71,45 +209,67 @@
         {
             "delay": 1.0, 
             "src": {
-                "sw": "s1", 
-                "port": "s1-eth4"
-            }, 
-            "dst": {
-                "sw": "s2", 
-                "port": "s2-eth1"
-            }
-        }, 
-        {
-            "delay": 1.0, 
-            "src": {
-                "sw": "s2", 
-                "port": "s2-eth1"
+                "sw": "s3", 
+                "port": "s3-eth5"
             }, 
             "dst": {
                 "sw": "s1", 
-                "port": "s1-eth4"
+                "port": "s1-eth3"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
                 "sw": "s1", 
-                "port": "s1-eth5"
+                "port": "s1-eth3"
             }, 
             "dst": {
                 "sw": "s3", 
-                "port": "s3-eth1"
+                "port": "s3-eth5"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
                 "sw": "s3", 
-                "port": "s3-eth1"
+                "port": "s3-eth6"
             }, 
             "dst": {
-                "sw": "s1", 
-                "port": "s1-eth5"
+                "sw": "s2", 
+                "port": "s2-eth10"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s2", 
+                "port": "s2-eth10"
+            }, 
+            "dst": {
+                "sw": "s3", 
+                "port": "s3-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s3", 
+                "port": "s3-eth10"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth1"
+            }, 
+            "dst": {
+                "sw": "s3", 
+                "port": "s3-eth10"
             }
         }
     ]

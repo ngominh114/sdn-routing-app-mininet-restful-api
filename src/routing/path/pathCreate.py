@@ -64,9 +64,14 @@ class PathCreator:
     def createPath(self, src, dst):
         if(src == dst):
             return []
+        if src in self.shortestPaths:
+            srcPaths = self.shortestPaths[src]
+            if dst in srcPaths:
+                path = srcPaths[dst]
+                return path
         self.updatePath()
         path = self.shortestPaths[src][dst]
         return path
 
-    
+    # def updateCost(newCost):
     

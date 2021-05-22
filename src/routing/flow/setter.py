@@ -1,14 +1,17 @@
 from object import Flow
 import os
+import time
 def makeFlow(switch, inPort, outPort,src, dst):
     flow = Flow(switch, inPort, outPort,src['mac'], dst['mac'])
     return flow
 
-def setFlow(flows):
+def setFlow(net, flows):
     for flow in flows:
-        sw = flow.switch
-        os.system("sudo ovs-ofctl add-flow %s in_port=%s,dl_src=%s,dl_dst=%s,priority=50000,actions=output:%s" %(sw, flow.in_port, flow.dl_src, flow.dl_dst, flow.out_port))
-def installFlow(path, src, dst):
+        sw_str = flow.switch
+        sw = net.getNodeByName(sw_str)
+        # sw.dpctl("add-flow", "in_port=%s,dl_src=%s,dl_dst=%s,priority=50000,actions=output:%s" %(flow.in_port, flow.dl_src, flow.dl_dst, flow.out_port))
+        os.system("ovs-ofctl add-flow %s in_port=%s,dl_src=%s,dl_dst=%s,priority=50000,actions=output:%s" %(sw_str, flow.in_port, flow.dl_src, flow.dl_dst, flow.out_port))
+def installFlow(net, path, src, dst):
     flows = []
     if (len(path) == 0):
         flow = makeFlow(src['connectPoint']['sw'], 
@@ -37,5 +40,4 @@ def installFlow(path, src, dst):
             switch = path[i]['src']['sw']
             flow = makeFlow(switch, inPort, outPort, src, dst)
             flows.append(flow)
-    setFlow(flows)
-
+    setFlow(net, flows)
