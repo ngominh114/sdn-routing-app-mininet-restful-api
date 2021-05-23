@@ -53,6 +53,8 @@ class TrafficMatrixManager():
         self.current_traffic_matrix = matrix
         self.latest_time = self.current_time
         self.current_time = time.time()*1000
+    
+    
         
                 
             

@@ -9,6 +9,7 @@ from routing.flow import setter
 from routing.path.pathCreate import PathCreator
 from traffic.traffic_matrix import TrafficMatrixManager
 from mininet.cli import CLI
+from mininet.link import Intf
 import json
 import time
 from threading import Timer
@@ -45,14 +46,8 @@ def pingAll():
     return ""
 
 @app.route("/test", methods=["GET"])
-def testtttttttt():
-    h_test1 = mininetSim.net.addHost("h_test1")
-    h_test2 = mininetSim.net.addHost("h_test2")
-    s1 = mininetSim.net.getNodeByName("s1")
-    s2 = mininetSim.net.getNodeByName("s2")
-    mininetSim.net.addLink(h_test1, s1)
-    mininetSim.net.addLink(h_test2, s2)
-    h_test1.cmd("ping -c1 " + str(h_test2.IP()))
+def test():
+    mininetSim.measure_delay()
     return ""
 
 @app.route('/', methods=['GET'])
@@ -70,6 +65,7 @@ def setFlow():
 @app.route('/data.update', methods = ['GET'])
 def updateData():
     api.updateDataByNet(mininetSim.net)
+    
     pathCreate.graph.updateGraph(api.data)
     return ""
 
@@ -88,5 +84,5 @@ def connect(dpid):
 
 @app.route('/cmd')
 def cli():
-    CLI(mininetSim.net, script="traffic-gen-script1.sh")
+    CLI(mininetSim.net)
     return ""
