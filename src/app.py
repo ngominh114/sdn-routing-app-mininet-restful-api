@@ -47,7 +47,8 @@ def pingAll():
 
 @app.route("/test", methods=["GET"])
 def test():
-    mininetSim.measure_delay()
+    mininetSim.prepare()
+    mininetSim.measure_delay('s1','s3', api)
     return ""
 
 @app.route('/', methods=['GET'])
@@ -65,7 +66,6 @@ def setFlow():
 @app.route('/data.update', methods = ['GET'])
 def updateData():
     api.updateDataByNet(mininetSim.net)
-    
     pathCreate.graph.updateGraph(api.data)
     return ""
 

@@ -165,5 +165,8 @@ class DataAPI:
         self.buildLinkDataByNet(net)
         self.buildSwitchDataByNet(net)
 
-
+    def getLink(self, src, dst):
+        for link in self.data["links"]:
+            if(link["src"]["sw"] == src and link["dst"]["sw"]==dst):
+                return link
 

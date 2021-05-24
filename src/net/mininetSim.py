@@ -3,14 +3,13 @@ import random
 from mininet.net import Mininet
 from mininet.node import RemoteController
 import time
+import os
 def activeIntf(link):
     intf1 = link.intf1
     intf2 = link.intf2
     node1 = intf1.node
     node2 = intf2.node
-    print(str(node1), str(intf1))
     if("h" in str(node1)):
-        print("AA")
         node2.attach(intf2)
         return
     node1.attach(intf1)
@@ -23,6 +22,9 @@ class MininetSim():
         self.number_of_switch = 0
         self.number_of_host = 0
         self.c_ip = []
+        self.host_sw = {}
+        self.host_sw["h_test1"] = {}
+        self.host_sw["h_test2"] = {}
     def generate(self, config):
         number_of_controllers = len(config["CONTROLLER_IP"])
         for i in range(number_of_controllers):
@@ -50,6 +52,15 @@ class MininetSim():
         for edge in edges:
             linkopts = dict()
             self.net.addLink(self.nodeMapNet[edge[0]], self.nodeMapNet[edge[1]], **linkopts)
+
+        h_test1 = self.net.addHost("h_test1", ip='10.0.0.200')
+        h_test2 = self.net.addHost("h_test2", ip='10.0.0.201')
+
+        for sw in self.net.switches:
+            link1 = self.net.addLink(sw, h_test1)
+            link2 = self.net.addLink(sw, h_test2)
+            self.host_sw[str(h_test1)][str(sw)] = link1
+            self.host_sw[str(h_test2)][str(sw)] = link2
         
     def start(self):
         controllers = []
@@ -60,38 +71,55 @@ class MininetSim():
         for i, sw in enumerate(self.net.switches):
             c = random.choice(controllers)
             sw.start([c])
-        # self.net.waitConnected()
+        self.net.waitConnected()
     
     def pingAll(self):
         self.net.pingAll()
 
-    def measure_delay(self):
-        netLinks = self.net.links
-        h_test1 = self.net.addHost('h_test1')
-        h_test2 = self.net.addHost('h_test2')
-        link_1 = self.net.addLink('s1', h_test1)
-        link_2 = self.net.addLink('s2', h_test2)
-        activeIntf(link_1)
-        activeIntf(link_2)
+    def prepare(self):
+        for sw in self.net.switches:
+            self.net.configLinkStatus(str(sw), "h_test1", 'down')
+            self.net.configLinkStatus(str(sw), "h_test2", 'down')
 
-        h_test1.setIP('10.0.0.50')
-        h_test2.setIP('10.0.0.51')
-        # for netLink in netLinks:
-        #     intf1 = netLink.intf1
-        #     intf2 = netLink.intf2
-        #     node1 = intf1.node
-        #     node2 = intf2.node
-        #     if (("h" in str(node1)) or ("h" in str(node2))):
-        #         continue
-        #     link_1 = self.net.addLink(node1, h31)
-        #     link_2 = self.net.addLink(node2, h32)
+    def measure_delay(self, sw1, sw2, api):
+        h_test1 = self.net.getNodeByName("h_test1")
+        h_test2 = self.net.getNodeByName("h_test2")
+        # for intf in h_test1.intfs:
+        #     if intf.isUp():
+        #         h_test1.cmd("ifconfig %s down"%str(intf))
+        # for intf in h_test2.intfs:
+        #     if intf.isUp():
+        #         h_test2.cmd("ifconfig %s down"%str(intf))
+        link = api.getLink(sw1, sw2)
+        link1 = self.host_sw["h_test1"][sw1]
+        link2 = self.host_sw["h_test2"][sw2]
+        intf1 = link1.intf2
+        intf2 = link2.intf2
+        self.net.configLinkStatus(sw1, 'h_test1', 'up')
+        self.net.configLinkStatus(sw2, 'h_test2', 'up')
 
 
-        #     time.sleep(1)
-        #     # rs = self.net.iperf((h250, h251))
+        h_test1.setIP('10.0.0.200',intf=intf1)
+        h_test2.setIP('10.0.0.201',intf=intf2)
 
-        #     return
-        #     # print rs
+        os.system("sudo ovs-ofctl add-flow %s in_port=%s,priority=41000,actions=output:%s"%(sw1, str(link1.intf1), str(link["src"]["port"])))
+        os.system("sudo ovs-ofctl add-flow %s in_port=%s,priority=41000,actions=output:%s"%(sw2, str(link["dst"]["port"]), str(link2.intf1)))
 
-        #     # self.net.delLink(link_1)
-        #     # self.net.delLink(link_2)
+        os.system("sudo ovs-ofctl add-flow %s in_port=%s,priority=41000,actions=output:%s"%(sw1, str(link["src"]["port"]), str(link1.intf1)))
+        os.system("sudo ovs-ofctl add-flow %s in_port=%s,priority=41000,actions=output:%s"%(sw2, str(link2.intf1), str(link["dst"]["port"])))
+        
+        rs = h_test1.cmd("ping -c1", h_test2.IP())
+        print(rs)
+        rs2 = h_test2.cmd("ping -c1", h_test1.IP())
+        print(rs)
+
+        os.system("sudo ovs-ofctl del-flows %s --strict priority=41000,in_port=%s"%(sw1, str(link1.intf1)))
+        os.system("sudo ovs-ofctl del-flows %s --strict priority=41000,in_port=%s"%(sw2, str(link["dst"]["port"])))
+
+        os.system("sudo ovs-ofctl del-flows %s --strict priority=41000,in_port=%s"%(sw1, str(link["src"]["port"])))
+        os.system("sudo ovs-ofctl del-flows %s --strict priority=41000,in_port=%s"%(sw2, str(link2.intf1)))
+
+        # h_test1.stop()
+        # h_test2.stop()
+            
+
