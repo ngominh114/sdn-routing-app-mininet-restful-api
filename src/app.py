@@ -7,7 +7,7 @@ from flask import Flask
 from flask import request
 from routing.flow import setter
 from routing.path.pathCreate import PathCreator
-from traffic.traffic_matrix import TrafficMatrixManager
+from net.mininetSim import TrafficMatrixManager
 from mininet.cli import CLI
 from mininet.link import Intf
 import json
@@ -26,7 +26,7 @@ config.read('config.ini')
 mininetSim = MininetSim()
 mininetSim.generate(config)
 pathCreate = PathCreator()
-trafficMatrixManager = TrafficMatrixManager()
+trafficMatrixManager = TrafficMatrixManager(mininetSim.net)
 def findPathAndSetFlow(src, dst):
     srcHost = api.getHostByMac(str.lower(str(src)))
     dstHost = api.getHostByMac(str.lower(str(dst)))
@@ -47,8 +47,8 @@ def pingAll():
 
 @app.route("/test", methods=["GET"])
 def test():
-    mininetSim.prepare()
-    mininetSim.measure_delay('s1','s3', api)
+    CLI(mininetSim.net, script='net/traffic-gen-script1.sh')
+    CLI(mininetSim.net)
     return ""
 
 @app.route('/', methods=['GET'])
@@ -60,6 +60,11 @@ def setFlow():
     data = request.get_json()
     src = data["src"]
     dst = data["dst"]
+    if( src == mininetSim.h_test1_mac or
+        src == mininetSim.h_test2_mac or
+        dst == mininetSim.h_test1_mac or
+        dst == mininetSim.h_test2_mac):
+        return""
     findPathAndSetFlow(src, dst)
     return ""
 
@@ -81,6 +86,7 @@ def connect(dpid):
         sw.dpctl("add-flow", "priority=0,dl_type=0x88cc,actions=CONTROLLER:65535")
         sw.dpctl("add-flow", "priority=0,dl_type=0x8942,actions=CONTROLLER:65535")
     return ""
+
 
 @app.route('/cmd')
 def cli():

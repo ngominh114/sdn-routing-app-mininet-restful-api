@@ -19,200 +19,90 @@
             "controller_address": "192.168.1.1", 
             "id": "0000000000000004", 
             "name": "s4"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000005", 
+            "name": "s5"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000006", 
+            "name": "s6"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000007", 
+            "name": "s7"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000008", 
+            "name": "s8"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000009", 
+            "name": "s9"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000010", 
+            "name": "s10"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000011", 
+            "name": "s11"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000012", 
+            "name": "s12"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000013", 
+            "name": "s13"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000014", 
+            "name": "s14"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000015", 
+            "name": "s15"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000016", 
+            "name": "s16"
+        }, 
+        {
+            "controller_address": "192.168.1.1", 
+            "id": "0000000000000017", 
+            "name": "s17"
         }
     ], 
     "hosts": [
         {
-            "mac": "26:8b:ed:8e:41:a1", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth1"
-            }
-        }, 
-        {
-            "mac": "ea:9e:07:07:9d:cb", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth2"
-            }
-        }, 
-        {
-            "mac": "ce:58:1f:a1:79:e4", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth3"
-            }
-        }, 
-        {
-            "mac": "e6:77:e3:ee:13:4a", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth4"
-            }
-        }, 
-        {
-            "mac": "0e:e3:8e:ec:f4:98", 
+            "mac": "ca:89:b3:db:2c:b2", 
             "connectPoint": {
                 "sw": "s1", 
-                "port": "s1-eth2"
+                "port": "s1-eth3"
             }
         }, 
         {
-            "mac": "9a:80:60:ea:bf:90", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth1"
-            }
-        }, 
-        {
-            "mac": "e6:d8:bf:04:e8:bd", 
-            "connectPoint": {
-                "sw": "s1", 
-                "port": "s1-eth1"
-            }
-        }, 
-        {
-            "mac": "0e:1d:14:94:cb:8d", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth2"
-            }
-        }, 
-        {
-            "mac": "ea:a3:58:ed:19:ad", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth3"
-            }
-        }, 
-        {
-            "mac": "ca:fd:41:c8:a0:fd", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth8"
-            }
-        }, 
-        {
-            "mac": "5a:ce:d4:8a:9b:00", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth4"
-            }
-        }, 
-        {
-            "mac": "c6:02:41:d9:2d:ab", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth5"
-            }
-        }, 
-        {
-            "mac": "7e:71:b1:81:95:88", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth6"
-            }
-        }, 
-        {
-            "mac": "c2:0c:eb:f3:17:66", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth7"
-            }
-        }, 
-        {
-            "mac": "16:c7:38:74:8f:1c", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth11"
-            }
-        }, 
-        {
-            "mac": "1a:0b:77:c5:d6:c4", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth12"
-            }
-        }, 
-        {
-            "mac": "12:e2:9c:6d:f8:bb", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth8"
-            }
-        }, 
-        {
-            "mac": "3a:e1:4b:14:75:62", 
-            "connectPoint": {
-                "sw": "s2", 
-                "port": "s2-eth9"
-            }
-        }, 
-        {
-            "mac": "42:d4:e5:d7:fc:30", 
-            "connectPoint": {
-                "sw": "s4", 
-                "port": "s4-eth2"
-            }
-        }, 
-        {
-            "mac": "a6:1b:d3:26:6d:e0", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth7"
-            }
-        }, 
-        {
-            "mac": "42:6d:eb:da:09:e9", 
-            "connectPoint": {
-                "sw": "s3", 
-                "port": "s3-eth9"
-            }
-        }, 
-        {
-            "mac": "a2:be:a9:5a:3c:3d", 
-            "connectPoint": {
-                "sw": "s4", 
-                "port": "s4-eth3"
-            }
-        }, 
-        {
-            "mac": "82:ed:fe:78:57:79", 
-            "connectPoint": {
-                "sw": "s4", 
-                "port": "s4-eth4"
-            }
-        }, 
-        {
-            "mac": "b6:1e:4f:ec:5a:33", 
-            "connectPoint": {
-                "sw": "s4", 
-                "port": "s4-eth5"
-            }
-        }, 
-        {
-            "mac": "9a:ce:44:d6:f5:d0", 
-            "connectPoint": {
-                "sw": "s4", 
-                "port": "s4-eth6"
-            }
-        }, 
-        {
-            "mac": "76:f2:b1:cc:70:b4", 
-            "connectPoint": {
-                "sw": "s4", 
-                "port": "s4-eth7"
-            }
-        }, 
-        {
-            "mac": "8a:a3:f4:9d:86:4d", 
+            "mac": "aa:41:9a:4c:6a:af", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth4"
             }
         }, 
         {
-            "mac": "2e:4e:b6:3a:07:c7", 
+            "mac": "ce:79:36:41:7d:19", 
             "connectPoint": {
                 "sw": "s1", 
                 "port": "s1-eth5"
@@ -223,52 +113,129 @@
         {
             "delay": 1.0, 
             "src": {
-                "sw": "s3", 
-                "port": "s3-eth5"
+                "sw": "s2", 
+                "port": "s2-eth1"
             }, 
             "dst": {
-                "sw": "s1", 
-                "port": "s1-eth3"
+                "sw": "s5", 
+                "port": "s5-eth1"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
-                "sw": "s1", 
-                "port": "s1-eth3"
-            }, 
-            "dst": {
-                "sw": "s3", 
-                "port": "s3-eth5"
-            }
-        }, 
-        {
-            "delay": 1.0, 
-            "src": {
-                "sw": "s3", 
-                "port": "s3-eth6"
+                "sw": "s5", 
+                "port": "s5-eth1"
             }, 
             "dst": {
                 "sw": "s2", 
-                "port": "s2-eth10"
+                "port": "s2-eth1"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
                 "sw": "s2", 
-                "port": "s2-eth10"
+                "port": "s2-eth2"
             }, 
             "dst": {
-                "sw": "s3", 
-                "port": "s3-eth6"
+                "sw": "s6", 
+                "port": "s6-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s6", 
+                "port": "s6-eth1"
+            }, 
+            "dst": {
+                "sw": "s2", 
+                "port": "s2-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s2", 
+                "port": "s2-eth3"
+            }, 
+            "dst": {
+                "sw": "s7", 
+                "port": "s7-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s7", 
+                "port": "s7-eth1"
+            }, 
+            "dst": {
+                "sw": "s2", 
+                "port": "s2-eth3"
             }
         }, 
         {
             "delay": 1.0, 
             "src": {
                 "sw": "s3", 
-                "port": "s3-eth10"
+                "port": "s3-eth1"
+            }, 
+            "dst": {
+                "sw": "s1", 
+                "port": "s1-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s1", 
+                "port": "s1-eth1"
+            }, 
+            "dst": {
+                "sw": "s3", 
+                "port": "s3-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s3", 
+                "port": "s3-eth2"
+            }, 
+            "dst": {
+                "sw": "s1", 
+                "port": "s1-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s1", 
+                "port": "s1-eth2"
+            }, 
+            "dst": {
+                "sw": "s3", 
+                "port": "s3-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth1"
+            }, 
+            "dst": {
+                "sw": "s5", 
+                "port": "s5-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s5", 
+                "port": "s5-eth2"
             }, 
             "dst": {
                 "sw": "s4", 
@@ -279,11 +246,1012 @@
             "delay": 1.0, 
             "src": {
                 "sw": "s4", 
-                "port": "s4-eth1"
+                "port": "s4-eth2"
+            }, 
+            "dst": {
+                "sw": "s5", 
+                "port": "s5-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s5", 
+                "port": "s5-eth3"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth3"
+            }, 
+            "dst": {
+                "sw": "s5", 
+                "port": "s5-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s5", 
+                "port": "s5-eth4"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s6", 
+                "port": "s6-eth2"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth4"
+            }, 
+            "dst": {
+                "sw": "s6", 
+                "port": "s6-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s6", 
+                "port": "s6-eth3"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth5"
+            }, 
+            "dst": {
+                "sw": "s6", 
+                "port": "s6-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s6", 
+                "port": "s6-eth4"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth6"
+            }, 
+            "dst": {
+                "sw": "s6", 
+                "port": "s6-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s7", 
+                "port": "s7-eth2"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth7"
+            }, 
+            "dst": {
+                "sw": "s7", 
+                "port": "s7-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth1"
+            }, 
+            "dst": {
+                "sw": "s6", 
+                "port": "s6-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s6", 
+                "port": "s6-eth5"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth2"
+            }, 
+            "dst": {
+                "sw": "s6", 
+                "port": "s6-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s6", 
+                "port": "s6-eth6"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth1"
             }, 
             "dst": {
                 "sw": "s3", 
-                "port": "s3-eth10"
+                "port": "s3-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s3", 
+                "port": "s3-eth3"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth2"
+            }, 
+            "dst": {
+                "sw": "s3", 
+                "port": "s3-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s3", 
+                "port": "s3-eth4"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s10", 
+                "port": "s10-eth1"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth1"
+            }, 
+            "dst": {
+                "sw": "s10", 
+                "port": "s10-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s10", 
+                "port": "s10-eth2"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth1"
+            }, 
+            "dst": {
+                "sw": "s10", 
+                "port": "s10-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth2"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth1"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth3"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth2"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth4"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth3"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth5"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth2"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth6"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth3"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s11", 
+                "port": "s11-eth7"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth1"
+            }, 
+            "dst": {
+                "sw": "s11", 
+                "port": "s11-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth4"
+            }, 
+            "dst": {
+                "sw": "s13", 
+                "port": "s13-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s13", 
+                "port": "s13-eth1"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth5"
+            }, 
+            "dst": {
+                "sw": "s13", 
+                "port": "s13-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s13", 
+                "port": "s13-eth2"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth6"
+            }, 
+            "dst": {
+                "sw": "s13", 
+                "port": "s13-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s13", 
+                "port": "s13-eth3"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth7"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth1"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s12", 
+                "port": "s12-eth8"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth4"
+            }, 
+            "dst": {
+                "sw": "s12", 
+                "port": "s12-eth8"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s13", 
+                "port": "s13-eth4"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth3"
+            }, 
+            "dst": {
+                "sw": "s13", 
+                "port": "s13-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s13", 
+                "port": "s13-eth5"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth2"
+            }, 
+            "dst": {
+                "sw": "s13", 
+                "port": "s13-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s13", 
+                "port": "s13-eth6"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth3"
+            }, 
+            "dst": {
+                "sw": "s13", 
+                "port": "s13-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth4"
+            }, 
+            "dst": {
+                "sw": "s3", 
+                "port": "s3-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s3", 
+                "port": "s3-eth5"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth5"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth5"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth6"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth2"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s14", 
+                "port": "s14-eth7"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth3"
+            }, 
+            "dst": {
+                "sw": "s14", 
+                "port": "s14-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth6"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth3"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth3"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth7"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth4"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth8"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth4"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth8"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth9"
+            }, 
+            "dst": {
+                "sw": "s16", 
+                "port": "s16-eth1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s16", 
+                "port": "s16-eth1"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth9"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth10"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth4"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth4"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth10"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s15", 
+                "port": "s15-eth11"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth5"
+            }, 
+            "dst": {
+                "sw": "s15", 
+                "port": "s15-eth11"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s16", 
+                "port": "s16-eth2"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth5"
+            }, 
+            "dst": {
+                "sw": "s16", 
+                "port": "s16-eth2"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth6"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth6"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth7"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth7"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth8"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth8"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth8"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth8"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth9"
+            }, 
+            "dst": {
+                "sw": "s8", 
+                "port": "s8-eth9"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s8", 
+                "port": "s8-eth9"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth9"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth10"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth5"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth10"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth11"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth6"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth6"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth11"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth12"
+            }, 
+            "dst": {
+                "sw": "s9", 
+                "port": "s9-eth7"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s9", 
+                "port": "s9-eth7"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth12"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth13"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth8"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth8"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth13"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s17", 
+                "port": "s17-eth14"
+            }, 
+            "dst": {
+                "sw": "s4", 
+                "port": "s4-eth9"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "sw": "s4", 
+                "port": "s4-eth9"
+            }, 
+            "dst": {
+                "sw": "s17", 
+                "port": "s17-eth14"
             }
         }
     ]
