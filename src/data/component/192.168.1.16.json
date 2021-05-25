@@ -1,0 +1,58 @@
+{
+    "hosts": [
+        {
+            "mac": "4A:EB:97:02:6B:83", 
+            "connectPoint": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "5E:05:96:1D:EF:99", 
+            "connectPoint": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "F2:E5:55:72:53:E0", 
+            "connectPoint": {
+                "switchId": "of:0000000000000003", 
+                "port": "2"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "42:67:B9:93:70:95", 
+            "connectPoint": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "FA:C6:52:0A:E4:45", 
+            "connectPoint": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "36:23:6B:B3:2A:E2", 
+            "connectPoint": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }
+    ], 
+    "switches": [
+        {
+            "controller_ip": "192.168.1.16", 
+            "id": "of:0000000000000003"
+        }
+    ]
+}

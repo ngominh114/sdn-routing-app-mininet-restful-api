@@ -1,0 +1,120 @@
+{
+    "hosts": [
+        {
+            "mac": "E6:9D:49:FD:F2:06", 
+            "connectPoint": {
+                "switchId": "of:0000000000000001", 
+                "port": "7"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "4A:EB:97:02:6B:83", 
+            "connectPoint": {
+                "switchId": "of:0000000000000001", 
+                "port": "2"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "5E:05:96:1D:EF:99", 
+            "connectPoint": {
+                "switchId": "of:0000000000000001", 
+                "port": "1"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "F2:E5:55:72:53:E0", 
+            "connectPoint": {
+                "switchId": "of:0000000000000001", 
+                "port": "5"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "42:67:B9:93:70:95", 
+            "connectPoint": {
+                "switchId": "of:0000000000000001", 
+                "port": "3"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "FA:C6:52:0A:E4:45", 
+            "connectPoint": {
+                "switchId": "of:0000000000000002", 
+                "port": "2"
+            }, 
+            "suspended": false
+        }, 
+        {
+            "mac": "36:23:6B:B3:2A:E2", 
+            "connectPoint": {
+                "switchId": "of:0000000000000001", 
+                "port": "6"
+            }, 
+            "suspended": false
+        }
+    ], 
+    "links": [
+        {
+            "delay": 1.0, 
+            "src": {
+                "switchId": "of:0000000000000001", 
+                "port": "4"
+            }, 
+            "dst": {
+                "switchId": "of:0000000000000002", 
+                "port": "1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "switchId": "of:0000000000000001", 
+                "port": "5"
+            }, 
+            "dst": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "switchId": "of:0000000000000003", 
+                "port": "1"
+            }, 
+            "dst": {
+                "switchId": "of:0000000000000001", 
+                "port": "5"
+            }
+        }, 
+        {
+            "delay": 1.0, 
+            "src": {
+                "switchId": "of:0000000000000002", 
+                "port": "1"
+            }, 
+            "dst": {
+                "switchId": "of:0000000000000001", 
+                "port": "4"
+            }
+        }
+    ], 
+    "switches": [
+        {
+            "controller_ip": "192.168.1.14", 
+            "id": "of:0000000000000003"
+        }, 
+        {
+            "controller_ip": "192.168.1.14", 
+            "id": "of:0000000000000001"
+        }, 
+        {
+            "controller_ip": "192.168.1.14", 
+            "id": "of:0000000000000002"
+        }
+    ]
+}

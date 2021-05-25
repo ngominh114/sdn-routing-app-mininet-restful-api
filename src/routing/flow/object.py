@@ -1,11 +1,10 @@
 class Flow:
-    def __init__(self, priority, timeout, isPermanent, deviceId, treatment, selector):
-        self.priority = priority
-        self.timeout = timeout
-        self.isPermanent = isPermanent
-        self.deviceId = deviceId
-        self.treatment = treatment
-        self.selector = selector
+    def __init__(self, switch, in_port, out_port, dl_src, dl_dst):
+        self.switch = switch
+        self.in_port = in_port
+        self.out_port = out_port
+        self.dl_src= dl_src
+        self.dl_dst = dl_dst
 class Criteria:
     @staticmethod
     def matchInPort(port):
