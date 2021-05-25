@@ -1,2 +1,5 @@
 .vscode/
 __pycache__/
+__init__.pyc
+data.json
+src/net/data/

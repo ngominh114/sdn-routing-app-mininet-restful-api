@@ -1,6 +1,7 @@
+from graph import Graph
 class PathCreator:
-    def __init__(self, graph):
-        self.graph = graph
+    def __init__(self):
+        self.graph = Graph()
         self.shortestPaths = {}
     def traceShortestLinks(self, currentVertex, parents):
         if (currentVertex == 'NULL'):
@@ -11,41 +12,41 @@ class PathCreator:
             tracedLinks.append(currentVertex)
             return tracedLinks
 
-    def buildPathFromLink(self, tracedDeviceIds):
-        size = len(tracedDeviceIds)
+    def buildPathFromLink(self, tracedswitches):
+        size = len(tracedswitches)
         links = []
         for i in range(1,size):
-            src = tracedDeviceIds[i-1]
-            dst = tracedDeviceIds[i]
+            src = tracedswitches[i-1]
+            dst = tracedswitches[i]
             links.append(self.graph.adj[src][dst])
         return links
 
     def dijkstra(self, src):
-        nVertices = self.graph.numberOfDevices
+        nVertices = self.graph.numberOfSwitches
         dist = {}
         added = {}
-        for deviceId in self.graph.deviceIds:
-            dist[deviceId] = float("inf")
-            added[deviceId] = False
+        for switch in self.graph.switches:
+            dist[switch] = float("inf")
+            added[switch] = False
 
         dist[src] = 0.0
         parent = {}
         parent[src] = 'NULL'
 
         for i in range(nVertices):
-            nearestDeviceId = 'NULL'
+            nearestswitch = 'NULL'
             shortestDistance = float("inf")
-            for deviceId in self.graph.deviceIds:
-                if (added[deviceId] == False and dist[deviceId] < shortestDistance):
-                    nearestDeviceId = deviceId
-                    shortestDistance = dist[deviceId]
-            added[nearestDeviceId] = True
-            for deviceId in self.graph.deviceIds:
-                edgeDistance = self.graph.getCost(nearestDeviceId, deviceId)
-                if (edgeDistance > 0 and (shortestDistance + edgeDistance) < dist[deviceId]):
-                    parent[deviceId] = nearestDeviceId
-                    dist[deviceId] = edgeDistance + shortestDistance
-        for dst in self.graph.deviceIds:
+            for switch in self.graph.switches:
+                if (added[switch] == False and dist[switch] < shortestDistance):
+                    nearestswitch = switch
+                    shortestDistance = dist[switch]
+            added[nearestswitch] = True
+            for switch in self.graph.switches:
+                edgeDistance = self.graph.getCost(nearestswitch, switch)
+                if (edgeDistance > 0 and (shortestDistance + edgeDistance) < dist[switch]):
+                    parent[switch] = nearestswitch
+                    dist[switch] = edgeDistance + shortestDistance
+        for dst in self.graph.switches:
             if(src != dst):
                 if (len(parent) == 1):
                     path = []
@@ -55,18 +56,22 @@ class PathCreator:
                     self.shortestPaths[src][dst] = path
 
     def updatePath(self):
-        deviceIds = self.graph.deviceIds
-        for deviceId in deviceIds:
-            self.shortestPaths[deviceId] = {}
-            self.dijkstra(deviceId)
+        switches = self.graph.switches
+        for switch in switches:
+            self.shortestPaths[switch] = {}
+            self.dijkstra(switch)
         
     def createPath(self, src, dst):
-        self.updatePath()
-        try:
-            path = self.shortestPaths[src][dst]
-            return path
-        except:
+        if(src == dst):
             return []
+        if src in self.shortestPaths:
+            srcPaths = self.shortestPaths[src]
+            if dst in srcPaths:
+                path = srcPaths[dst]
+                return path
+        self.updatePath()
+        path = self.shortestPaths[src][dst]
+        return path
 
-    
+    # def updateCost(newCost):
     
