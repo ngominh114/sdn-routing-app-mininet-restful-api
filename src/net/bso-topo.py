@@ -18,8 +18,14 @@ dataset = {
     "timestamp": [],
     "node1": [],
     "node2": [],
-    "packets": [],
-    "bytes": [],
+    "node1_rx_pkts_rate": [],
+    "node1_tx_pkts_rate": [],
+    "node1_rx_bytes_rate": [],
+    "node1_tx_bytes_rate":[],
+    "node2_rx_pkts_rate": [],
+    "node2_tx_pkts_rate": [],
+    "node2_rx_bytes_rate": [],
+    "node2_tx_bytes_rate":[],
     "bw": [],
     "delay": []
 }
@@ -40,22 +46,35 @@ def generate_data():
             data = create_data(intf1, intf2)
         else: 
             data = create_data(intf2, intf1)
+        print(data)
         dataset["timestamp"].append(data["timestamp"])
         dataset["node1"].append(data["node1"])
         dataset["node2"].append(data["node2"])
-        dataset["packets"].append(data["packets"])
-        dataset["bytes"].append(data["bytes"])
+        dataset["node1_rx_pkts_rate"].append(data["node1_rx_pkts_rate"])
+        dataset["node2_rx_pkts_rate"].append(data["node2_rx_pkts_rate"])
+        dataset["node1_tx_pkts_rate"].append(data["node1_tx_pkts_rate"])
+        dataset["node2_tx_pkts_rate"].append(data["node2_tx_pkts_rate"])
+        dataset["node1_rx_bytes_rate"].append(data["node1_rx_bytes_rate"])
+        dataset["node2_rx_bytes_rate"].append(data["node2_rx_bytes_rate"])
+        dataset["node1_tx_bytes_rate"].append(data["node1_tx_bytes_rate"])
+        dataset["node2_tx_bytes_rate"].append(data["node2_tx_bytes_rate"])
         dataset["bw"].append(data["bw"])
         dataset["delay"].append(data["delay"])
     print(len(dataset["timestamp"]))
-    if len(dataset["timestamp"]) > 100:
+    if len(dataset["timestamp"]) > 300:
         df = pd.DataFrame.from_dict(dataset)
         dataset = {
             "timestamp": [],
             "node1": [],
             "node2": [],
-            "packets": [],
-            "bytes": [],
+            "node1_rx_pkts_rate": [],
+            "node1_tx_pkts_rate": [],
+            "node1_rx_bytes_rate": [],
+            "node1_tx_bytes_rate":[],
+            "node2_rx_pkts_rate": [],
+            "node2_tx_pkts_rate": [],
+            "node2_rx_bytes_rate": [],
+            "node2_tx_bytes_rate":[],
             "bw": [],
             "delay": []
         }
@@ -63,17 +82,23 @@ def generate_data():
         print("create data")
     Timer(1,generate_data).start()
 def create_data(intf1, intf2):
-    sw_src = str(intf1.node)
-    sw_dst = str(intf2.node)
-    delay = measure_delay(sw_src, sw_dst)
-    packets_rate, bytes_rate, timestamp = get_traffic_rate(intf1, intf2)
-    bw = links[sw_src][sw_dst]["bw"]
+    s1 = str(intf1.node)
+    s2 = str(intf2.node)
+    delay = measure_delay(s1, s2)
+    s1_traffic_rate, s2_traffic_rate, timestamp = get_traffic_rate(intf1, intf2)
+    bw = links[s1][s2]["bw"]
     data = {
         "timestamp": timestamp,
-        "node1": sw_src,
-        "node2": sw_dst,
-        "packets": packets_rate,
-        "bytes": bytes_rate,
+        "node1": s1,
+        "node2": s2,
+        "node1_rx_pkts_rate": s1_traffic_rate["rx_pkts_rate"],
+        "node1_tx_pkts_rate": s1_traffic_rate["tx_pkts_rate"],
+        "node1_rx_bytes_rate": s1_traffic_rate["rx_bytes_rate"],
+        "node1_tx_bytes_rate": s1_traffic_rate["tx_bytes_rate"],
+        "node2_rx_pkts_rate": s2_traffic_rate["rx_pkts_rate"],
+        "node2_tx_pkts_rate": s2_traffic_rate["tx_pkts_rate"],
+        "node2_rx_bytes_rate": s2_traffic_rate["rx_bytes_rate"],
+        "node2_tx_bytes_rate": s2_traffic_rate["tx_bytes_rate"],
         "bw": bw,
         "delay":delay
     }
@@ -82,33 +107,53 @@ def create_data(intf1, intf2):
 def get_traffic_rate(intf1, intf2):
     s1 = intf1.node
     s2 = intf2.node
-    traffic = create_traffic(s1, intf1)
-    latest_traffic = get_latest_traffic(str(s1), str(s2))
-    packets = traffic["packets"] - latest_traffic["packets"]
-    transmited_bytes = traffic["bytes"] - latest_traffic["bytes"]
+    s1_traffic_rate = calc_traffic_rate(s1, intf1)
+    s2_traffic_rate = calc_traffic_rate(s2, intf2)
+    return s1_traffic_rate, s2_traffic_rate, time.time()
+
+def calc_traffic_rate(sw, intf):
+    traffic = create_traffic(sw, intf)
+    latest_traffic = get_latest_traffic(str(sw), str(intf))
+    rx_pkts = traffic["rx_pkts"] - latest_traffic["rx_pkts"]
+    tx_pkts = traffic["tx_pkts"] - latest_traffic["tx_pkts"]
+    rx_bytes = traffic["rx_bytes"] - latest_traffic["rx_bytes"]
+    tx_bytes = traffic["tx_bytes"] - latest_traffic["tx_bytes"]
     times = traffic["time"] - latest_traffic["time"]
-    packets_rate = packets/times
-    bytes_rate = transmited_bytes/times
-    latest_traffic_data[str(s1)][str(s2)] = traffic
-    latest_traffic_data[str(s2)][str(s1)] = traffic
-    return packets_rate, bytes_rate, traffic["time"]
+
+    latest_traffic_data[str(sw)][str(intf)] = traffic
+    rx_pkts_rate = rx_pkts/times
+    tx_pkts_rate = tx_pkts/times
+    rx_bytes_rate = rx_bytes/times
+    tx_bytes_rate = tx_bytes/times
+
+    return {
+        "rx_pkts_rate":rx_pkts_rate,
+        "tx_pkts_rate":tx_pkts_rate,
+        "rx_bytes_rate":rx_bytes_rate,
+        "tx_bytes_rate":tx_bytes_rate
+    }
 
 def create_traffic(sw, intf):
     currentTime = time.time()
     result = sw.dpctl("dump-ports", str(intf))
     result = result.split()
-    index = result.index("rx")
-    packets_str = result[index+1]
-    bytes_str = result[index+2]
-    packets = int(re.search(r'\d+', packets_str).group())
-    transmit_bytes = int(re.search(r'\d+', bytes_str).group())
-    traffic = {"packets":packets, "bytes":transmit_bytes, "time":currentTime}
+    rx_index = result.index("rx")
+    rx_pkts_str = result[rx_index+1]
+    rx_bytes_str = result[rx_index+2]
+    rx_pkts = int(re.search(r'\d+', rx_pkts_str).group())
+    rx_transmit_bytes = int(re.search(r'\d+', rx_bytes_str).group())
+    tx_index = result.index("tx")
+    tx_pkts_str = result[tx_index+1]
+    tx_bytes_str = result[tx_index+2]
+    tx_pkts = int(re.search(r'\d+', tx_pkts_str).group())
+    tx_transmit_bytes = int(re.search(r'\d+', tx_bytes_str).group())
+    traffic = {"rx_pkts":rx_pkts, "rx_bytes":rx_transmit_bytes, "tx_pkts":tx_pkts, "tx_bytes": tx_transmit_bytes, "time":currentTime}
     return traffic
 
-def get_latest_traffic(sw1, sw2):
-    if not sw2 in latest_traffic_data[sw1]:
-        return {"packets":0, "bytes":0, "time":start_time}
-    return latest_traffic_data[sw1][sw2]
+def get_latest_traffic(sw, intf):
+    if not intf in latest_traffic_data[sw]:
+        return {"rx_pkts":0, "rx_bytes":0, "tx_pkts":0, "tx_bytes":0, "time":start_time}
+    return latest_traffic_data[sw][intf]
 
 def measure_delay(sw1, sw2):
     h_test1 = net.getNodeByName("h_test1")
@@ -187,7 +232,7 @@ def generate():
     link_from = [1,2,2,2,2,2,3,3,5,7,8,8,9,9,10,11,12,13]
     link_to = [2,3,4,5,7,8,4,5,6,9,9,12,10,13,11,13,13,14]
     for lf, lt in zip(link_from, link_to):
-        bw = random.uniform(8, 20)
+        bw = random.uniform(10, 20)
         sw_src = 's%d' % int(lf)
         sw_dst = 's%d' % int(lt)
         link = net.addLink(sw_src, sw_dst, cls=TCLink, bw=bw)
@@ -224,10 +269,8 @@ def bso():
     #Run traffic generator script
     CLI(net, script='traffic-gen-script1.sh')
     start_time = time.time()
-    currentTime = time.time()
     time.sleep(1)
     generate_data()
-    print("RUN TIME: " + str(time.time() - currentTime))
     CLI(net)
     for host in net.hosts:
         print(host)
