@@ -18,14 +18,10 @@ dataset = {
     "timestamp": [],
     "node1": [],
     "node2": [],
-    "node1_rx_pkts_rate": [],
-    "node1_tx_pkts_rate": [],
-    "node1_rx_bytes_rate": [],
-    "node1_tx_bytes_rate":[],
-    "node2_rx_pkts_rate": [],
-    "node2_tx_pkts_rate": [],
-    "node2_rx_bytes_rate": [],
-    "node2_tx_bytes_rate":[],
+    "backward_pkts_rate": [],
+    "forward_pkts_rate": [],
+    "backward_bytes_rate": [],
+    "forward_bytes_rate":[],
     "bw": [],
     "delay": []
 }
@@ -46,18 +42,13 @@ def generate_data():
             data = create_data(intf1, intf2)
         else: 
             data = create_data(intf2, intf1)
-        print(data)
         dataset["timestamp"].append(data["timestamp"])
         dataset["node1"].append(data["node1"])
         dataset["node2"].append(data["node2"])
-        dataset["node1_rx_pkts_rate"].append(data["node1_rx_pkts_rate"])
-        dataset["node2_rx_pkts_rate"].append(data["node2_rx_pkts_rate"])
-        dataset["node1_tx_pkts_rate"].append(data["node1_tx_pkts_rate"])
-        dataset["node2_tx_pkts_rate"].append(data["node2_tx_pkts_rate"])
-        dataset["node1_rx_bytes_rate"].append(data["node1_rx_bytes_rate"])
-        dataset["node2_rx_bytes_rate"].append(data["node2_rx_bytes_rate"])
-        dataset["node1_tx_bytes_rate"].append(data["node1_tx_bytes_rate"])
-        dataset["node2_tx_bytes_rate"].append(data["node2_tx_bytes_rate"])
+        dataset["backward_pkts_rate"].append(data["backward_pkts_rate"])
+        dataset["forward_pkts_rate"].append(data["forward_pkts_rate"])
+        dataset["backward_bytes_rate"].append(data["backward_bytes_rate"])
+        dataset["forward_bytes_rate"].append(data["forward_bytes_rate"])
         dataset["bw"].append(data["bw"])
         dataset["delay"].append(data["delay"])
     print(len(dataset["timestamp"]))
@@ -67,14 +58,10 @@ def generate_data():
             "timestamp": [],
             "node1": [],
             "node2": [],
-            "node1_rx_pkts_rate": [],
-            "node1_tx_pkts_rate": [],
-            "node1_rx_bytes_rate": [],
-            "node1_tx_bytes_rate":[],
-            "node2_rx_pkts_rate": [],
-            "node2_tx_pkts_rate": [],
-            "node2_rx_bytes_rate": [],
-            "node2_tx_bytes_rate":[],
+            "backward_pkts_rate": [],
+            "forward_pkts_rate": [],
+            "backward_bytes_rate": [],
+            "forward_bytes_rate":[],
             "bw": [],
             "delay": []
         }
@@ -85,31 +72,25 @@ def create_data(intf1, intf2):
     s1 = str(intf1.node)
     s2 = str(intf2.node)
     delay = measure_delay(s1, s2)
-    s1_traffic_rate, s2_traffic_rate, timestamp = get_traffic_rate(intf1, intf2)
+    traffic_rate, timestamp = get_traffic_rate(intf1)
     bw = links[s1][s2]["bw"]
     data = {
         "timestamp": timestamp,
         "node1": s1,
         "node2": s2,
-        "node1_rx_pkts_rate": s1_traffic_rate["rx_pkts_rate"],
-        "node1_tx_pkts_rate": s1_traffic_rate["tx_pkts_rate"],
-        "node1_rx_bytes_rate": s1_traffic_rate["rx_bytes_rate"],
-        "node1_tx_bytes_rate": s1_traffic_rate["tx_bytes_rate"],
-        "node2_rx_pkts_rate": s2_traffic_rate["rx_pkts_rate"],
-        "node2_tx_pkts_rate": s2_traffic_rate["tx_pkts_rate"],
-        "node2_rx_bytes_rate": s2_traffic_rate["rx_bytes_rate"],
-        "node2_tx_bytes_rate": s2_traffic_rate["tx_bytes_rate"],
+        "backward_pkts_rate": traffic_rate["rx_pkts_rate"],
+        "forward_pkts_rate": traffic_rate["tx_pkts_rate"],
+        "backward_bytes_rate": traffic_rate["rx_bytes_rate"],
+        "forward_bytes_rate": traffic_rate["tx_bytes_rate"],
         "bw": bw,
         "delay":delay
     }
     return data
 
-def get_traffic_rate(intf1, intf2):
-    s1 = intf1.node
-    s2 = intf2.node
-    s1_traffic_rate = calc_traffic_rate(s1, intf1)
-    s2_traffic_rate = calc_traffic_rate(s2, intf2)
-    return s1_traffic_rate, s2_traffic_rate, time.time()
+def get_traffic_rate(intf):
+    sw = intf.node
+    traffic_rate = calc_traffic_rate(sw, intf)
+    return traffic_rate, time.time()
 
 def calc_traffic_rate(sw, intf):
     traffic = create_traffic(sw, intf)

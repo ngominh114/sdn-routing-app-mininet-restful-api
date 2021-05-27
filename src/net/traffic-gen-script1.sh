@@ -9,7 +9,7 @@ h3 for file in prepared-pcaps/h3/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=
 
 h4 for file in prepared-pcaps/h4/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1500 -i h4-eth0 --pps=7 $file & done
 
-h5 for file in prepared-pcaps/h5/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1000 -i h5-eth0 --pps=10 $file & done
+h5 for file in prepared-pcaps/h5/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1000 -i h5-eth0 --pps=8 $file & done
 
 h6 for file in prepared-pcaps/h6/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=22000 -i h6-eth0 --pps=9 $file & done
 
@@ -23,8 +23,8 @@ h10 for file in prepared-pcaps/h10/*.pcap; do tcpreplay --loop=100 --loopdelay-m
 
 h11 for file in prepared-pcaps/h11/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1500 -i h11-eth0 --pps=9 $file & done
 
-h12 for file in prepared-pcaps/h12/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1000 -i h12-eth0 --pps=13 $file & done
+h12 for file in prepared-pcaps/h12/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1000 -i h12-eth0 --pps=12 $file & done
 
 h13 for file in prepared-pcaps/h13/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=1500 -i h13-eth0 --pps=8 $file & done
 
-h14 for file in prepared-pcaps/h14/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=2000 -i h14-eth0 --pps=12 $file & done
+h14 for file in prepared-pcaps/h14/*.pcap; do tcpreplay --loop=100 --loopdelay-ms=2000 -i h14-eth0 --pps=10 $file & done
