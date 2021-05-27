@@ -26,6 +26,8 @@ dataset = {
     "delay": []
 }
 number_of_data = 0
+def sw_to_dpid(sw):
+    return int(re.search(r'\d+', sw).group())
 def generate_data():
     global number_of_data
     global dataset
@@ -76,8 +78,8 @@ def create_data(intf1, intf2):
     bw = links[s1][s2]["bw"]
     data = {
         "timestamp": timestamp,
-        "node1": s1,
-        "node2": s2,
+        "node1": sw_to_dpid(s1),
+        "node2": sw_to_dpid(s2),
         "backward_pkts_rate": traffic_rate["rx_pkts_rate"],
         "forward_pkts_rate": traffic_rate["tx_pkts_rate"],
         "backward_bytes_rate": traffic_rate["rx_bytes_rate"],
